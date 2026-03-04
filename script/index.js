@@ -13,8 +13,24 @@ const removeActive = ()=>{
 }
 
 
+const loadWordDetail = async (id) =>{
+    const url = `https://openapi.programming-hero.com/api/word/${id}`;
+    const res = await fetch(url);
+    const details = await res.json();
+    displayWordDetails(details.data);
+    
+}
+
+const displayWordDetails = (word)=>{
+
+    const detailsBox = document.getElementById('details-container');
+    detailsBox.innerHTML = ``
+    document.getElementById('word_modal').showModal();
+}
+
+
 const loadLevelWord = (id) =>{
-    console.log(id);
+   
     const url = `https://openapi.programming-hero.com/api/level/${id}`
 
     fetch(url)
@@ -53,7 +69,7 @@ const displayLevelWords = (words) =>{
             <p class="font-semibold">Meaning / Pronunciation</p>
             <div class="text-2xl font-medium font-bangla">${word.meaning ? word.meaning : "No meaning available"} / ${word.pronunciation ? word.pronunciation : "No pronunciation available"}</div>
             <div class="flex justify-between items-center">
-                <button onclick="my_modal_5.showModal()" class="bg-sky-50 btn hover:bg-sky-300"><i class="fa-solid fa-circle-info"></i></button>
+                <button onclick="loadWordDetail(${word.id})" class="bg-sky-50 btn hover:bg-sky-300"><i class="fa-solid fa-circle-info"></i></button>
                 <button class="bg-sky-50 btn hover:bg-sky-300"><i class="fa-solid fa-volume-high"></i></button>
             </div>
         </div>
