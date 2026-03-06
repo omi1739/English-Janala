@@ -24,7 +24,11 @@ const loadWordDetail = async (id) =>{
 const displayWordDetails = (word)=>{
 
     const detailsBox = document.getElementById('details-container');
-    detailsBox.innerHTML = ``
+    detailsBox.innerHTML = `
+
+        
+
+    `
     document.getElementById('word_modal').showModal();
 }
 
